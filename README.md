@@ -60,13 +60,6 @@
 
 ## Three stage
 
-特徵向量（516 維）：
-- `emb_0` ~ `emb_511`：HeAR embedding（512維）
-- `age`：年齡（數值，標準化）
-- `gender`：性別（male=0, female=1, other=2）
-- `respiratory_condition`：慢性呼吸道疾病（0/1）
-- `fever_muscle_pain`：發燒或肌肉痠痛（0/1）
-
 ### Stage 1: Covid vs non-Covid
 
 | Label | Define |
@@ -82,3 +75,31 @@
 | symptomatic | upper_infection, lower_infection, obstructive_disease |
 
 ### Stage 3: Upper infection vs Lower infection vs Obstructive disease
+
+#### Version 1
+特徵向量（516 維）：
+- `emb_0` ~ `emb_511`：HeAR embedding（512維）
+- `age`：年齡（數值，標準化）
+- `gender`：性別（male=0, female=1, other=2）
+- `respiratory_condition`：慢性呼吸道疾病（0/1）
+- `fever_muscle_pain`：發燒或肌肉痠痛（0/1）
+
+| Stage | Model |
+| --- | --- |
+| 1 | LogisticRegression |
+| 2 | LogisticRegression |
+| 3 | LogisticRegression |
+
+#### Version 2
+特徵向量（516 維）：
+- `emb_0` ~ `emb_511`：HeAR embedding（512維）
+- `age`：年齡（數值，標準化）
+- `gender`：性別（male=0, female=1, other=2）
+- `respiratory_condition`：慢性呼吸道疾病（0/1）
+- `fever_muscle_pain`：發燒或肌肉痠痛（0/1）
+
+| Stage | Model |
+| --- | --- |
+| 1 | LogisticRegression |
+| 2 | LogisticRegression |
+| 3 | SVM |
