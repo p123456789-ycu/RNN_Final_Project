@@ -26,3 +26,31 @@
 | --- | --- |
 | Train Data | `diagnosis_1` ～ `diagnosis_4` |
 | Test Data | `status_SSL` |
+
+## Two stage
+
+臨床特徵：`age`、`gender`
+
+特徵向量（516 維）：
+- `emb_0` ~ `emb_511`：HeAR embedding（512維）
+- `age`：年齡（數值，標準化）
+- `gender`：性別（male=0, female=1, other=2）
+- `respiratory_condition`：慢性呼吸道疾病（0/1）
+- `fever_muscle_pain`：發燒或肌肉痠痛（0/1）
+
+### Stage 1: Covid vs non-Covid
+
+| Label | Define |
+| --- | --- |
+| covid | COVID-19 |
+| non-Covid | healthy_cough, upper_infection, lower_infection, obstructive_disease |
+
+### Stage 2: Healthy vs Symptomatic
+
+| Label | Define |
+| --- | --- |
+| healthy | healthy_cough |
+| symptomatic | upper_infection, lower_infection, obstructive_disease |
+
+
+
