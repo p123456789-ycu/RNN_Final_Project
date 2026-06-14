@@ -134,3 +134,25 @@ pipe = ImbPipeline([
                ))
 ])
 ```
+
+#### Version 4
+
+| Stage | Model | 特徵向量|
+| --- | --- | --- |
+| 1 | LogisticRegression | 516 |
+| 2 | LogisticRegression | 516 |
+| 3 | pipe | 520 |
+
+```
+pipe = ImbPipeline([
+    ('scaler', StandardScaler()),
+    ('smote',  SMOTE(k_neighbors=5, random_state=42)),
+    ('pca',    PCA(n_components=80)),
+    ('clf',    LogisticRegression(
+                   class_weight='balanced',
+                   max_iter=1000,
+                   solver='lbfgs',
+                   random_state=42
+               ))
+])
+```
