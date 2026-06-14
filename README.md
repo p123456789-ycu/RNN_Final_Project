@@ -1,7 +1,7 @@
 # CoughCare, Rag, Ollama
 結合 RAG 技術與 Ollama 本地大型語言模型的智慧咳嗽分析Agent
 ---
-## normal _or abnormal
+## normal_or_abnormal
 
 ### 正常 vs 異常
 
