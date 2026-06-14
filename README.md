@@ -102,7 +102,16 @@
 | --- | --- | --- |
 | 1 | LogisticRegression | 516 |
 | 2 | LogisticRegression | 516 |
-| 3 | SVM | 516 |
+| 3 | pipe | 516 |
+
+```
+pipe = Pipeline([
+    ('scaler', StandardScaler()),
+    ('pca', PCA(n_components=100)),
+    ('svc', SVC(kernel='rbf', class_weight='balanced',
+                probability=True, random_state=42))
+])
+```
 
 #### Version 3
 
@@ -110,4 +119,18 @@
 | --- | --- | --- |
 | 1 | LogisticRegression | 516 |
 | 2 | LogisticRegression | 516 |
-| 3 | SVM | 520 |
+| 3 | pipe | 520 |
+
+```
+pipe = ImbPipeline([
+    ('scaler', StandardScaler()),
+    ('smote',  SMOTE(k_neighbors=5, random_state=42)),
+    ('pca',    PCA(n_components=80)),
+    ('clf',    LogisticRegression(
+                   class_weight='balanced',
+                   max_iter=1000,
+                   solver='lbfgs',
+                   random_state=42
+               ))
+])
+```
