@@ -1,7 +1,7 @@
 # CoughCare, Rag, Ollama
 結合 RAG 技術與 Ollama 本地大型語言模型的智慧咳嗽分析Agent
 ---
-## normal_or_abnormal
+## normal _or abnormal
 
 ### 正常 vs 異常
 
@@ -76,27 +76,38 @@
 
 ### Stage 3: Upper infection vs Lower infection vs Obstructive disease
 
-特徵向量（516 維）：
+特徵向量：
 - `emb_0` ~ `emb_511`：HeAR embedding（512維）
-- `age`：年齡（數值，標準化）
-- `gender`：性別（male=0, female=1, other=2）
-- `respiratory_condition`：慢性呼吸道疾病（0/1）
-- `fever_muscle_pain`：發燒或肌肉痠痛（0/1）
-- 
+- `age`：年齡（數值）=> 516 維
+- `gender_encoded`：性別（male=0, female=1, other=2, unknown=-1）=> 516 維
+- `respiratory_condition`：慢性呼吸道疾病（0/1）=> 516 維
+- `fever_muscle_pain`：發燒或肌肉痠痛（0/1）=> 516 維
+- `cough_type_encoded`：咳嗽類型，wet=1 / dry=0 / unknown=-1 => 520 維
+- `dyspnea`：呼吸困難，1/0/-1 => 520 維
+- `wheezing`：喘鳴聲，1/0/-1 => 520 維
+- `congestion`：鼻塞，1/0/-1 => 520 維
+
 #### Version 1
 特徵向量：516 維
 
-| Stage | Model |
-| --- | --- |
-| 1 | LogisticRegression |
-| 2 | LogisticRegression |
-| 3 | LogisticRegression |
+| Stage | Model | 特徵向量|
+| --- | --- | --- |
+| 1 | LogisticRegression | 516 |
+| 2 | LogisticRegression | 516 |
+| 3 | LogisticRegression | 516 |
 
 #### Version 2
-特徵向量：516 維
 
-| Stage | Model |
-| --- | --- |
-| 1 | LogisticRegression |
-| 2 | LogisticRegression |
-| 3 | SVM |
+| Stage | Model | 特徵向量|
+| --- | --- | --- |
+| 1 | LogisticRegression | 516 |
+| 2 | LogisticRegression | 516 |
+| 3 | SVM | 516 |
+
+#### Version 3
+
+| Stage | Model | 特徵向量|
+| --- | --- | --- |
+| 1 | LogisticRegression | 516 |
+| 2 | LogisticRegression | 516 |
+| 3 | SVM | 520 |
