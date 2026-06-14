@@ -139,8 +139,8 @@ pipe = ImbPipeline([
 
 | Stage | Model | 特徵向量|
 | --- | --- | --- |
-| 1 | LogisticRegression | 516 |
-| 2 | LogisticRegression | 516 |
+| 1 | pipe | 516 |
+| 2 | pipe | 516 |
 | 3 | pipe | 520 |
 
 ```
