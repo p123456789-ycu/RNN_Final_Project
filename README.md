@@ -13,6 +13,7 @@
 ---
 
 ## CoughNet
+Baseline version
 
 ### Covid vs Healthy vs Symptomatic
 
